@@ -6,4 +6,7 @@ router.get('/', function(req, res, next) {
   res.render('add_employee');
 });
 
+/*
+router.post('/')
+*/
 module.exports = router;
