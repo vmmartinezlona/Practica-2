@@ -1,0 +1,17 @@
+a {
+  color: #02201c;
+  text-decoration: none; }
+  a:hover {
+    color: #008999; }
+
+.toolbar {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 200px;
+  margin-right: 200px; }
+
+.header {
+  margin-top: 50px;
+  margin-left: 320px; }
+
+/*# sourceMappingURL=employeeList.css.map */

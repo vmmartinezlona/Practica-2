@@ -1,0 +1,22 @@
+$link-color: #02201c;
+$linkhover-color: #008999;
+/*
+body {
+  text-align: left;
+}
+*/
+
+a {
+  color: $link-color;
+  text-decoration: none;
+  &:hover {
+    color: $linkhover-color;
+  }
+}
+
+.toolbar {
+  margin-top: 15px;
+  margin-bottom: 15px;
+  margin-left: 20%;
+  margin-right: 20%;
+}

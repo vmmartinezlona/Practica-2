@@ -1,0 +1,31 @@
+* {
+  font-size: 20px; }
+
+body {
+  background: #b4ed9a; }
+
+h1, h2, h3 {
+  color: #02201c;
+  text-align: center; }
+
+h1 {
+  font-size: 70px; }
+
+h2 {
+  font-size: 50px; }
+
+h3 {
+  font-size: 30px; }
+
+button {
+  background-color: #02201c;
+  color: #b4ed9a;
+  border-width: 0;
+  width: 150px;
+  height: 50px; }
+
+.icon {
+  width: 200px;
+  height: auto; }
+
+/*# sourceMappingURL=main.css.map */
