@@ -7,6 +7,7 @@ router.get('/', function(req, res, next) {
   res.render('add_employee');
 });
 
+/*
 
 router.post('/', function(req, res){
   console.log(req.body);
@@ -32,5 +33,5 @@ router.post('/', function(req, res){
     });
   });
 });
-
+*/
 module.exports = router;

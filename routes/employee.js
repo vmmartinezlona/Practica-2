@@ -4,14 +4,15 @@ var Employee = require('../models/employee.js')
 
 /* GET home page. */
 router.get('/', function(req, res, next) {
-
+  res.render('employee');
+/*
   employee.find(function(error, employeeList){
     if(error) {
       res.sed(500, error.message);
     }
     res.render('employee', {
-      title: 'Employees'
-      employees: employeeList
+      title: 'Employee'
+      employee: employeeList
     });
   });
 });
@@ -38,7 +39,7 @@ router.post('/', function(req, res) {
       }
       res.render('employee');
     });
-  });
+  });*/
 });
 
 module.exports = router;
