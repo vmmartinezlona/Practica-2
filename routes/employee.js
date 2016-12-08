@@ -22,4 +22,6 @@ var renderFunction = function(req, res, next) {
 */
 router.get('/', employeeManager.findAll); //READ
 
+router.get('/:id', employeeManager.findById);
+
 module.exports = router;

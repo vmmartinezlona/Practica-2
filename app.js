@@ -14,7 +14,7 @@ var employeeManager = require('./controllers/employeeManager.js');
 mongoose.connect('mongodb://localhost/employee');
 
 var app = express();
-var employee = express.Router();
+var router = express.Router();
 var db = mongoose.connection;
 
 var login = require('./routes/index');
@@ -28,8 +28,10 @@ db.once('open', function() {
 });
 
 // Declarar middlewares que va a usar la API
-app.use(bodyParser.urlencoded({ extended: false}));
+//configure bodyparser
+app.use(bodyParser.urlencoded({ extended: true}));
 app.use(bodyParser.json());
+
 app.use(methodOverride());
 
 // view engine setup
@@ -46,7 +48,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', login);
 app.use('/employee', employee);
 app.use('/employee/add', add);
-app.use('/employee/:employee_id', edit);
+
 
 /*
 employee.route('/employee')

@@ -7,7 +7,8 @@ var employeeManager = require('../controllers/employeeManager.js');
 router.get('/', function(req, res, next) {
   res.render('add_employee');
 });
-module.exports = router;
 
 /*POST new employee*/
 router.post('/', employeeManager.addEmployee);
+
+module.exports = router;

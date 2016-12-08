@@ -15,9 +15,29 @@ exports.findAll = function(req, res) {
 exports.findById = function(req, res) {
   var id = req.params.id;
   console.log('Employee: ' + id);
-  employee.findbyId(id, function(error, found) {
-    if(error) { res.send(500, console.error.message);}
-    res.status(200).json(found);
+  employee.findById(req.params.id, function(error, found) {
+    if(error) { return res.send(500, console.error.message);}
+    return res.status(200).json(found);
+    //res.json(found);
+  });
+};
+
+exports.updateEmployee = function(req, res) {
+  var id = req.params.employee_id;
+  employee.findById(id, function(error, selectedEmployee) {
+    if(error) { return res.send(500, console.error.message); }
+    //updateinfo
+    selectedEmployee.photo = req.body.photo;
+    selectedEmployee.lastName = req.body.lastName;
+    selectedEmployee.firstName = req.body.firstName;
+    selectedEmployee.address = req.body.address;
+    selectedEmployee.username = req.body.username;
+    selectedEmployee.password = req.body.password;
+    //save the employee
+    selectedEmployee.save(function(error) {
+      if(error) { return res.send(500, console.error.message); }
+      res.json({ message: 'Employee updated!' });
+    });
   });
 };
 
