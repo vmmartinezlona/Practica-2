@@ -1,4 +1,4 @@
-var employee = require('../models/Product.js');
+var employee = require('../models/employee.js');
 
 exports.findAll = function(req, res) {
   product.find(function(error, employeeList) {
@@ -17,10 +17,10 @@ exports.findById = function(req, res) {
   });
 }
 
-exports.addProducts = function(req, res) {
+exports.addEmployee = function(req, res) {
   console.log(req.body);
 
-  var newemployee = new employee({
+  var newEmployee = new employee({
     photo: req.body.photo,
     lastName: req.body.lastName,
     firstName: req.body.firstName,

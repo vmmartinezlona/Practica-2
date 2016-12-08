@@ -1,3 +1,5 @@
+//var employeeManager = require('./controllers/employeeManager');
+
 var express = require('express');
 var router = express.Router();
 
