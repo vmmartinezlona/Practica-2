@@ -1,13 +1,17 @@
 var employee = require('../models/employee.js');
 
+//GET
 exports.findAll = function(req, res) {
-  product.find(function(error, employeeList) {
-    if(error) { res.send(500, error.message); }
-    res.status(200).jsonp(employeeList);
+  employee.find(function(error, employeeList) {
+    if(error) { return res.send(500, error.message); }
+    res.render('employee', {
+      employee: employeeList
+    });
+    //return res.status(200).jsonp(employeeList);
   });
-  //res.send([{name:'wine1'}, {name:'wine2'}, {name:'wine3'}]);
 };
 
+//GET
 exports.findById = function(req, res) {
   var id = req.params.id;
   console.log('Employee: ' + id);
@@ -17,11 +21,13 @@ exports.findById = function(req, res) {
   });
 };
 
+//POST
 exports.addEmployee = function(req, res) {
   console.log(req.body);
 
   //Create a new instane of the employee model
   var newEmployee = new employee({
+    employeeId: req.body.employeeId,
     photo: req.body.photo,
     lastName: req.body.lastName,
     firstName: req.body.firstName,

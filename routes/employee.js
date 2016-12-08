@@ -1,8 +1,9 @@
 var express = require('express');
 var router = express.Router();
-var Employee = require('../models/employee.js')
+var Employee = require('../models/employee.js');
+var employeeManager = require('../controllers/employeeManager.js');
 
-/* GET employee pages and listen employeeList. */
+/* GET employee pages and listen employeeList.
 router.get('/', function(req, res, next) {
   Employee.find(function(error, employeeList){
     if(error) { res.sed(500, error.message); }
@@ -11,5 +12,14 @@ router.get('/', function(req, res, next) {
     });
   });
 });
+*/
+
+/*
+var renderFunction = function(req, res, next) {
+  res.render('employee');
+//  next();
+};
+*/
+router.get('/', employeeManager.findAll); //READ
 
 module.exports = router;

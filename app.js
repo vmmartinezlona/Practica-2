@@ -46,17 +46,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 app.use('/', login);
 app.use('/employee', employee);
 app.use('/employee/add', add);
-app.use('/employee/edit', edit);
+app.use('/employee/:employee_id', edit);
 
+/*
 employee.route('/employee')
   .get(employeeManager.findAll); //READ
-employee.route('/employee/add')
-  .post(employeeManager.addEmployee); //Insert
 employee.route('employee/:id')
   .get(employeeManager.findById)
   //.put(employeeManager.updateEmployee)
   //.delete(employeeManager.deleteEmployee);
-
+*/
 // Make our db accessible to our router
 /*
 app.use(function(req,res,next){
@@ -65,13 +64,6 @@ app.use(function(req,res,next){
 });
 */
 
-/*
-app.get('/wines', wine.findAll);
-app.get('/wines/:id', wine.findById);
-app.post('/wines', wine.addWine);
-app.put('/wines/:id', wine.updateWine);
-app.delete('/wines/:id', wine.deleteWine);
-*/
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   var err = new Error('Not Found');
