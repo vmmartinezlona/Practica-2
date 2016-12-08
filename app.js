@@ -43,21 +43,19 @@ app.use(logger('dev'));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
-app.use('/api', employee); //No funciona
-
-employee.route('/employee')
-  .get(employeeManager.findAll); //READ
-employee.route('/employee/add')
-  .post(employeeManager.addEmployee); //createServer
-employee.route('employee/:id')
-  .get(employeeManager.findById)
-  //.put(employeeManager.updateEmployee)
-  //.delete(employeeManager.deleteEmployee);
-
 app.use('/', login);
 app.use('/employee', employee);
 app.use('/employee/add', add);
 app.use('/employee/edit', edit);
+
+employee.route('/employee')
+  .get(employeeManager.findAll); //READ
+employee.route('/employee/add')
+  .post(employeeManager.addEmployee); //Insert
+employee.route('employee/:id')
+  .get(employeeManager.findById)
+  //.put(employeeManager.updateEmployee)
+  //.delete(employeeManager.deleteEmployee);
 
 // Make our db accessible to our router
 /*

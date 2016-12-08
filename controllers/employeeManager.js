@@ -15,11 +15,12 @@ exports.findById = function(req, res) {
     if(error) { res.send(500, console.error.message);}
     res.status(200).json(found);
   });
-}
+};
 
 exports.addEmployee = function(req, res) {
   console.log(req.body);
 
+  //Create a new instane of the employee model
   var newEmployee = new employee({
     photo: req.body.photo,
     lastName: req.body.lastName,
@@ -29,8 +30,10 @@ exports.addEmployee = function(req, res) {
     password: req.body.password
   });
 
-  employee.save(function (error, product) {
-    if(error) { res.send(500, error.message); }
-    res.status(200).json(employee);
+  //Save the employee and heck for errors
+  newEmployee.save(function (error, product) {
+    if(error) { return res.send(500, error.message); }
+    //res.status(200).json(employee);
+    res.json({ message: 'Employee created!' });
   });
-}
+};
