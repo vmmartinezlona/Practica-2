@@ -39,8 +39,12 @@ exports.updateEmployee = function(req, res) {
     //save the employee
     selectedEmployee.save(function(error) {
       if(error) { return res.send(500, console.error.message); }
-      return res.render('employee', {
-        employee: employeeList
+      employee.find(function(error, employeeList) {
+        if(error) { return res.send(500, error.message); }
+        return res.render('employee', {
+          employee: employeeList
+        });
+        return res.status(200).jsonp(employeeList);
       });
     });
   });
@@ -64,9 +68,12 @@ exports.addEmployee = function(req, res) {
   //Save the employee and heck for errors
   newEmployee.save(function (error) {
     if(error) { return res.send(500, error.message); }
-    return res.status(200).json(employee);
-    return res.render('employee', {
-      employee: employeeList
+    employee.find(function(error, employeeList) {
+      if(error) { return res.send(500, error.message); }
+      return res.render('employee', {
+        employee: employeeList
+      });
+      return res.status(200).jsonp(employeeList);
     });
   });
 };
@@ -75,8 +82,12 @@ exports.addEmployee = function(req, res) {
 exports.deleteEmployee = function(req, res) {
   employee.remove({ _id: req.params.employee_id }, function(error, selectedEmployee) {
       if(error) { return res.send(500, error.message); }
-      return res.render('employee', {
-        employee: employeeList
+      employee.find(function(error, employeeList) {
+        if(error) { return res.send(500, error.message); }
+        return res.render('employee', {
+          employee: employeeList
+        });
+        return res.status(200).jsonp(employeeList);
       });
     });
 };
