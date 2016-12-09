@@ -4,11 +4,9 @@ var employee = require('../models/employee.js');
 exports.findAll = function(req, res) {
   employee.find(function(error, employeeList) {
     if(error) { return res.send(500, error.message); }
-    /*
     return res.render('employee', {
       employee: employeeList
     });
-    */
     return res.status(200).jsonp(employeeList);
   });
 };
@@ -18,12 +16,15 @@ exports.findById = function(req, res) {
   var id = req.params.id;
   console.log('Employee: ' + id);
   employee.findById(req.params.id, function(error, found) {
-    if(error) { return res.send(500, console.error.message);}
+    if(error) { return res.send(500, console.error.message); }
+    return res.render('edit_employee', {
+      employee: found
+    });
     return res.status(200).json(found);
-    //res.json(found);
   });
 };
 
+//PUT
 exports.updateEmployee = function(req, res) {
   var id = req.params.employee_id;
   employee.findById(id, function(error, selectedEmployee) {
@@ -39,6 +40,7 @@ exports.updateEmployee = function(req, res) {
     selectedEmployee.save(function(error) {
       if(error) { return res.send(500, console.error.message); }
       res.json({ message: 'Employee updated!' });
+      res.render('employee');
     });
   });
 };
@@ -59,9 +61,10 @@ exports.addEmployee = function(req, res) {
   });
 
   //Save the employee and heck for errors
-  newEmployee.save(function (error, product) {
+  newEmployee.save(function (error) {
     if(error) { return res.send(500, error.message); }
     return res.status(200).json(employee);
-    res.json({ message: 'Employee created!' });
+    //res.json({ message: 'Employee created!' });
+    return res.render('employee');
   });
 };

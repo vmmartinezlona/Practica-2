@@ -7,26 +7,28 @@
 
   <div class = "editcontainer">
     <h2>Edit Employee</h2>
-    <img class = "icon" src = "http://guymcdowell.com/wp-content/uploads/2015/02/Guy-McDowell-2013-200x200px-96dpi.jpg">
-    <br><br>
-    <form action="/employee/edit" method="POST">
-      <label for="lastName">Last name</label>
-      <input id="lastName" name="lastName" type="text" value={{this.lastName}}>
+    <form action="/employee/:id" method="PUT">
+      <img class = "icon" src = "{{employee.photo}}" alt="{{employee.lastName}}">
       <br><br>
-      <label for="firstName">First name</label>
-      <input id="firstName" name="firstName" type="text" value={{this.firstName}}>
-      <br><br>
-      <label for="address">Address</label>
-      <input id="address" name="address" type="text" value={{this.address}}></label>
-      <br><br>
-      <label for="username">Username</label>
-      <input id="username" name="username" type="text" value={{this.username}}></label>
-      <br><br>
-      <label for="password">Password</label>
-      <input id="password" name="address" type="password" value={{this.password}}></label>
-    <br><br>
-    <label><button> Update </button></label>
-    <label><button> Delete </button></label>
+      <form action="/employee/edit" method="POST">
+        <label for="lastName">Last name</label>
+        <input id="lastName" name="lastName" type="text" value={{employee.lastName}}>
+        <br><br>
+        <label for="firstName">First name</label>
+        <input id="firstName" name="firstName" type="text" value={{employee.firstName}}>
+        <br><br>
+        <label for="address">Address</label>
+        <input id="address" name="address" type="text" value={{employee.address}}></label>
+        <br><br>
+        <label for="username">Username</label>
+        <input id="username" name="username" type="text" value={{employee.username}}></label>
+        <br><br>
+        <label for="password">Password</label>
+        <input id="password" name="address" type="password" value={{employee.password}}></label>
+        <br><br>
+        <label><button type="submit"> Update </button></label>
+        <label><button> Delete </button></label>
+      </form>
   </div>
 
 
