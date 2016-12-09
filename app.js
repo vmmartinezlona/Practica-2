@@ -13,58 +13,37 @@ var employeeManager = require('./controllers/employeeManager.js');
 //Connect to the database
 mongoose.connect('mongodb://localhost/employee');
 
-var app = express();
-var router = express.Router();
 var db = mongoose.connection;
+var app = express();
 
+//Endpoints
 var login = require('./routes/index');
 var employee = require('./routes/employee');
 var add = require('./routes/add_employee');
-var edit = require('./routes/edit_employee');
 
 db.on('error', console.log.bind(console, 'connection error: '));
 db.once('open', function() {
   console.log('Connection Successful');
 });
 
-// Declarar middlewares que va a usar la API
-//configure bodyparser
-app.use(bodyParser.urlencoded({ extended: true}));
-app.use(bodyParser.json());
-
-app.use(methodOverride());
-
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
-app.engine('.hbs', exphbs({defaultLayout: 'layout', extname: '.hbs'}));
+app.engine('.hbs', exphbs({ defaultLayout: 'layout', extname:'.hbs'}));
 app.set('view engine', 'hbs');
 
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
+app.use(bodyParser.json());
+app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
+//app.use(methodOverride());
 
 app.use('/', login);
 app.use('/employee', employee);
 app.use('/employee/add', add);
 
-
-/*
-employee.route('/employee')
-  .get(employeeManager.findAll); //READ
-employee.route('employee/:id')
-  .get(employeeManager.findById)
-  //.put(employeeManager.updateEmployee)
-  //.delete(employeeManager.deleteEmployee);
-*/
-// Make our db accessible to our router
-/*
-app.use(function(req,res,next){
-    req.db = db;
-    next();
-});
-*/
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
@@ -81,7 +60,7 @@ app.use(function(err, req, res, next) {
 
   // render the error page
   res.status(err.status || 500);
-  res.render('error');
+  return res.render('error');
 });
 
 module.exports = app;

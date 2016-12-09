@@ -4,10 +4,12 @@ var employee = require('../models/employee.js');
 exports.findAll = function(req, res) {
   employee.find(function(error, employeeList) {
     if(error) { return res.send(500, error.message); }
-    res.render('employee', {
+    /*
+    return res.render('employee', {
       employee: employeeList
     });
-    //return res.status(200).jsonp(employeeList);
+    */
+    return res.status(200).jsonp(employeeList);
   });
 };
 
@@ -59,7 +61,7 @@ exports.addEmployee = function(req, res) {
   //Save the employee and heck for errors
   newEmployee.save(function (error, product) {
     if(error) { return res.send(500, error.message); }
-    //res.status(200).json(employee);
+    return res.status(200).json(employee);
     res.json({ message: 'Employee created!' });
   });
 };

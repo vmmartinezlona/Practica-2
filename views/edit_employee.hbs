@@ -11,19 +11,19 @@
     <br><br>
     <form action="/employee/edit" method="POST">
       <label for="lastName">Last name</label>
-      <input id="lastName" name="lastName" type="text" placeholder="Last Name">
+      <input id="lastName" name="lastName" type="text" value={{this.lastName}}>
       <br><br>
       <label for="firstName">First name</label>
-      <input id="firstName" name="firstName" type="text" placeholder = "First Name">
+      <input id="firstName" name="firstName" type="text" value={{this.firstName}}>
       <br><br>
       <label for="address">Address</label>
-      <input id="address" name="address" type="text" placeholder="Address"></label>
+      <input id="address" name="address" type="text" value={{this.address}}></label>
       <br><br>
       <label for="username">Username</label>
-      <input id="username" name="username" type="text" placeholder = "Username"></label>
+      <input id="username" name="username" type="text" value={{this.username}}></label>
       <br><br>
       <label for="password">Password</label>
-      <input id="password" name="address" type="password" placeholder="Password"></label>
+      <input id="password" name="address" type="password" value={{this.password}}></label>
     <br><br>
     <label><button> Update </button></label>
     <label><button> Delete </button></label>
@@ -31,4 +31,5 @@
 
 
 </body>
+  <script src="controllers/employeeManager.js"></script>
 </html>
