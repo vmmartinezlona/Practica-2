@@ -39,8 +39,9 @@ exports.updateEmployee = function(req, res) {
     //save the employee
     selectedEmployee.save(function(error) {
       if(error) { return res.send(500, console.error.message); }
-      res.json({ message: 'Employee updated!' });
-      res.render('employee');
+      return res.render('employee', {
+        employee: employeeList
+      });
     });
   });
 };
@@ -64,7 +65,18 @@ exports.addEmployee = function(req, res) {
   newEmployee.save(function (error) {
     if(error) { return res.send(500, error.message); }
     return res.status(200).json(employee);
-    //res.json({ message: 'Employee created!' });
-    return res.render('employee');
+    return res.render('employee', {
+      employee: employeeList
+    });
   });
+};
+
+//DELETE
+exports.deleteEmployee = function(req, res) {
+  employee.remove({ _id: req.params.employee_id }, function(error, selectedEmployee) {
+      if(error) { return res.send(500, error.message); }
+      return res.render('employee', {
+        employee: employeeList
+      });
+    });
 };

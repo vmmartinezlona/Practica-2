@@ -9,19 +9,19 @@
   <img class="header" src="/images/header.png">
 
   <div class = "toolbar">
-    <label><input type "text" class = "input-search" placeholder = "Search"></label>
-    <label><button> Search </button></label>
-    <br>
     <button type="submit" onclick="location.href='/employee/add'"> Add Employee </button>
   </div>
 
   <div class = "employeecontainer">
     <br>
+<!--
     {{#each employee}}
-    {{this.lastName}} {{this.firstName}}
-    <img src="{{this.photo}}" class="img-responsive" alt="{{this.lastName}}">
+    <a href="'/employee/' + {{this.id}}" > {{this.lastName}} {{this.firstName}} </a>
+    </br>
     {{/each}}
+-->
   </div>
-
+  <script src='http://ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js'></script>
+  <script src='../public/javascripts/main.js'></script>
 </body>
 </html>

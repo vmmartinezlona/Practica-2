@@ -41,6 +41,7 @@ app.use(express.static(path.join(__dirname, 'public')));
 //app.use(methodOverride());
 
 app.use('/', login);
+app.use('/index', employee);
 app.use('/employee', employee);
 app.use('/employee/add', add);
 

@@ -13,5 +13,6 @@ router.get('/:id', function(req, res, next) {
 */
 router.get('/:id', employeeManager.findById);
 router.put('/:id', employeeManager.updateEmployee);
+router.delete('/:id', employeeManager.deleteEmployee);
 
 module.exports = router;
